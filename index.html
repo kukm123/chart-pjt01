@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반응형 테이블과 차트</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+  <script defer src="./chart.js"></script>
+</head>
+<body>
+
+  <h2 style="text-align: center;">Random 데이터 테이블</h2>
+
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+        <th>합</th>
+        <th>평균</th>
+      </tr>
+    </thead>
+    <tbody>
+      <script>
+        const tableData = [];
+        const columnSums = Array(10).fill(0);
+
+        for (let i = 1; i <= 4; i++) {
+          const rowData = [];
+          let rowSum = 0;
+
+          document.write("<tr>");
+          document.write(`<th>${i}</th>`);
+
+          for (let j = 0; j < 10; j++) {
+            const randomValue = Math.floor(Math.random() * 100);
+            document.write(`<td>${randomValue}</td>`);
+            rowData.push(randomValue);
+            rowSum += randomValue;
+            columnSums[j] += randomValue;
+          }
+
+          const rowAvg = (rowSum / 10).toFixed(2);
+          document.write(`<td>${rowSum}</td><td>${rowAvg}</td>`);
+          document.write("</tr>");
+          tableData.push(rowData);
+        }
+
+        document.write("<tr><th>합</th>");
+        let totalSum = 0;
+
+        columnSums.forEach(sum => {
+          document.write(`<td>${sum}</td>`);
+          totalSum += sum;
+        });
+
+        const totalAvg = (totalSum / 40).toFixed(2);
+        document.write(`<td>${totalSum}</td><td>${totalAvg}</td></tr>`);
+      </script>
+    </tbody>
+  </table>
+
+  <div class="charts-container">
+    <div class="chart-wrapper">
+      <canvas id="barChart"></canvas>
+    </div>
+    <div class="chart-wrapper">
+      <canvas id="pieChart"></canvas>
+    </div>
+    <div class="chart-wrapper">
+      <canvas id="lineChart"></canvas>
+    </div>
+  </div>
+
+</body>
+</html>

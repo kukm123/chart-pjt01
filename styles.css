@@ -1,0 +1,74 @@
+/* 테이블 스타일 */
+table {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+  th, td {
+    border: 1px solid #333;
+    padding: 12px;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+/* 차트 컨테이너 */
+.charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  /* 각 차트의 개별 래퍼 */
+  .chart-wrapper {
+    flex: 1 1 30%;  /* 3열 배치 */
+    max-width: 30%;
+    text-align: center;
+    color: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    height: 270x;  /* 고정된 높이 */
+  }
+  
+  /* 모든 차트 캔버스 동일한 크기 설정 */
+  .chart-wrapper canvas {
+    width: 100%;  /* 부모 요소에 맞게 확장 */
+    height: 100%; /* 캔버스의 높이도 고정 */
+    max-height: 250px;  /* 최대 높이 제한 */
+    margin-bottom: 15px;
+  }
+  
+  /* 반응형 레이아웃 */
+  @media (max-width: 1024px) {
+    .chart-wrapper {
+      flex: 1 1 45%;  /* 태블릿에서는 2열 배치 */
+      max-width: 45%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .chart-wrapper {
+      flex: 1 1 100%;  /* 모바일에서는 1열 배치 */
+      max-width: 100%;
+    }
+  
+    .chart-wrapper canvas {
+      height: 250px;  /* 모바일에서 높이 조정 */
+    }
+  }
+
+
+  .highlight {
+    background-color: yellow;
+    font-weight: bold;
+  }
